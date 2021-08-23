@@ -37,8 +37,8 @@ int main()
 	while(1) {
 	split = 0;
 	readEmptyLine = 1;
-	//player.Player_start();
-	player.Player_start_split();          //  split test
+	player.Player_start();
+	//player.Player_start_split();          //  split test
 	house.Casino_start();
 	std::cout << std::endl;
 	if(player.Get_budget() <= 0) {
