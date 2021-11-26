@@ -22,8 +22,8 @@ void Banner() {
 int main()
 {
 	int profit;
-	unsigned int bet_amount, bet_amount_split = 0, bet_amount_total, credit_amount;
-	bool bet_ok, split, doubled, readEmptyLine; 
+	unsigned int bet_amount, bet_amount_split = 0, credit_amount;
+	bool bet_ok, split, doubled, readEmptyLine, verify_blackjack; 
 	std::string command, player_name;	
 	std::vector<int> split_deck;
 	
@@ -37,6 +37,7 @@ int main()
 	while(1) {
 	split = 0;
 	readEmptyLine = 1;
+	verify_blackjack = 1;
 	player.Player_start();
 	//player.Player_start_split();          //  split test
 	house.Casino_start();
@@ -72,6 +73,16 @@ int main()
 			std::getline(std::cin, nimic);
 		}
 	        //	
+		if(verify_blackjack == 1) {
+			if(player.Get_number() == house.Limit()) {
+				std::cout << "\n**Blackjack**\n";
+				player.Set_done(1);
+				break;
+			}
+			else
+				verify_blackjack = 0;
+		}
+
 		std::cout << std::endl << "8=> ";
 		std::getline(std::cin, command);
 		
